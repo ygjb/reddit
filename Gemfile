@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
+  
+  gem 'haml', '~> 4.0', '>= 4.0.7'
   #Bootstrap Ruby Gem
   gem 'bootstrap', '~> 4.0.0.alpha6'
   
