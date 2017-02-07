@@ -1,2 +1,4 @@
 $('#links').html('<%= escape_javascript render(@links) %>');
 $('#paginator').html('<%= escape_javascript(paginate(@links, :remote => true).to_s) %>');
+var page = <%= params[:page] != nil ? params[:page] : 1 %>;
+history.pushState({page: page}, `Links ${page}`, `?page=${page}`);
