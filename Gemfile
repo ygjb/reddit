@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
-  
+  gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
   gem 'haml', '~> 4.0', '>= 4.0.7'
   #Bootstrap Ruby Gem
   gem 'bootstrap', '~> 4.0.0.alpha6'
@@ -47,6 +47,9 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'faker'
+  gem 'factory_girl_rails' # Needed in dev for generating when running scaffold
+  gem 'rspec-rails'
 end
 
 group :development do
