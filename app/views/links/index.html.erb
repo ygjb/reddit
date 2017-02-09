@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="display-3" >Links</h1>
+
 <div id="paginator">
   <%= paginate @links, :remote => true %>
 </div>
+
 <div id="links">
   <%= render @links %>
 </div>
+
 <%= link_to 'New Link', new_link_path %>
