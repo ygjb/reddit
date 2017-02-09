@@ -49,8 +49,4 @@ class LinksController < ApplicationController
     def link_params
       params.require(:link).permit(:title, :url, :user_id)
     end
-    
-    def check_current_user?
-      redirect_to links_path unless current_user
-    end
 end
