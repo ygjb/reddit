@@ -1,0 +1,12 @@
+.row.mb-3
+  .col-sm-2.col-lg-1
+    %img(class="img-thumbnail user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png")
+  .col-sm-10.col-lg-7
+    .card
+      .card-header
+        %strong 
+          =comment.user.email
+        %span(class="text-muted")
+          =comment.created_at
+      .card-block
+        =comment.body
