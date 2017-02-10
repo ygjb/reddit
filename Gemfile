@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
+  gem 'simple_token_authentication', '~> 1.0'
   
   gem "paperclip", "~> 5.0.0"
   #gem "aws-sdk", "~>2"

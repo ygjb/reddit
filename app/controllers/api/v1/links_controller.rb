@@ -12,8 +12,9 @@ class Api::V1::LinksController < Api::BaseApiController
   def show
     
     if @link.present?
-      @link = @link.to_hash
-      render json: @link, status: 200    
+      # @link = @link.to_hash
+      render json: @link, include: ['comments','user'], status: 200   
+      # render json: @link, status: 200    
     else
       nil
     end
