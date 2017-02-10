@@ -6,9 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
-
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/db/seed.rb
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
