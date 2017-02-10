@@ -3,10 +3,11 @@ class LinksController < ApplicationController
   before_action :check_current_user?, only: [:update,:create, :edit, :destroy]
   
   def index
-    @links = Link.order(:id).page params[:page]
+    @links = Link.order(id: :desc).page params[:page]
   end
 
   def show
+    @comments = @link.comments.order(id: :DESC)
   end
 
   def new

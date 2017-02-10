@@ -1,17 +1,5 @@
 %h4(class="comments") 
 Comments area: count
-=link.comments.count
+=comments.count
 .container.comment-area
-  -link.comments.each do | comment |
-    .row.mb-3
-      .col-sm-2.col-lg-1
-        %img(class="img-thumbnail user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png")
-      .col-sm-10.col-lg-7
-        .card
-          .card-header
-            %strong 
-              =comment.user.email
-            %span(class="text-muted")
-            commented 5 days ago
-          .card-block
-            =comment.body
+  =render comments

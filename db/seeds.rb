@@ -1,3 +1,4 @@
+rnd = Random.new
 user = User.new(
       :email                 => 'xtymchenko@ex.ua',
       :password              => 'Andreylol99!',
@@ -14,7 +15,6 @@ user.save!
   )
   user.skip_confirmation!
   user.save!
-  rnd = Random.new
   rnd.rand(10..100).times do
     link = Link.create!(
       :title => Faker::Lorem.sentence(3, true),
@@ -23,3 +23,14 @@ user.save!
       )
   end
 end
+# count_link = Link.all.count
+# count_user = User.all.count
+
+
+# 100.times do |i|
+#   Comment.create!(
+#     :user => User.find_by(id: rnd.rand(1..count_user)),
+#     :link => Link.find_by(id: i),
+#     :body => Faker::Lorem.paragraph
+#     )
+# end

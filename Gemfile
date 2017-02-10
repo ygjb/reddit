@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
+  
+  gem "paperclip", "~> 5.0.0"
+  #gem "aws-sdk", "~>2"
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
   gem 'haml', '~> 4.0', '>= 4.0.7'
   #Bootstrap Ruby Gem

@@ -12,7 +12,7 @@
   <%= render 'comments/new', review: Comment.new(link_id: @link.id) %>
 <%-end%>
 
-<%= render 'comments/show', link: @link %>
+<%= render 'comments/show', comments: @comments %>
 
 <br>
 <%= link_to 'Edit', edit_link_path(@link) %> |
