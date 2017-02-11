@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  paginates_per(15)
+  # paginates_per(15)
   
   belongs_to :link
   belongs_to :user

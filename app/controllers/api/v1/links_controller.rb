@@ -4,7 +4,7 @@ class Api::V1::LinksController < Api::BaseApiController
   def index
     @links = Link.links_per_page(params[:page])
     if !@links.blank?
-      render json: @links, status: 200
+      render json: { :links => @links}, status: 200
     else
       render json: @links.errors, status: :unprocessable_entity
     end
@@ -12,8 +12,8 @@ class Api::V1::LinksController < Api::BaseApiController
   def show
     
     if @link.present?
-      @link = @link.to_hash
-      render json: @link, status: 200    
+      # @link = @link.to_hash
+      render json: @link, include: ['comments'], status: 200
     else
       nil
     end
