@@ -20,15 +20,14 @@ form{
   }
 }
 .comment-area{
-  
   .col-sm-1{
     padding: 0 !important;
   }
   .card-block {
     padding: .4rem 1.25rem !important;
+    word-wrap:break-word;
   }
   .card-header {
-    
     position: relative;  
     padding: 0.3rem 1.25rem !important;
     
@@ -36,7 +35,6 @@ form{
       top: 50%;
       content: "";
       border-left-width: 0 !important;
-      
       width: 0;
       height: 0;
       display: block;
@@ -57,4 +55,57 @@ form{
       border-right-color: #f7f7f9 !important;
     }
   }
+}
+
+#fountainG{
+  visibility: hidden;
+  position: absolute;
+  top: 43%;
+  left: 30%;
+  z-index:1050;
+}
+
+.fountainG{
+	background-color:rgba(0,0,0,0.63);
+	position:absolute;
+	height: 23px;
+  width: 4px;
+	top:0;
+	animation-iteration-count:infinite;
+	animation-direction:normal;
+	animation-duration:1.035s;
+	transform:scale(.3);
+	border-radius:5px;
+}
+
+$position1: 0px;  $delay1: 0.416s;
+$position2: 8px;  $delay2: 0.5225s;
+$position3: 16px; $delay3: 0.619s;
+$position4: 25px; $delay4: 0.7255s;
+$position5: 33px; $delay5: 0.832s;
+$position6: 41px; $delay6: 0.9385s;
+$position7: 49px; $delay7: 1.035s;
+$position8: 58px; $delay8: 1.1415s;
+
+
+$position: $position1, $position2, $position3, $position4, $position5, $position6, $position7, $position8;
+$delay: $delay1, $delay2, $delay3, $delay4, $delay5, $delay6, $delay7, $delay8;
+
+@for $i from 1 through length($position) {
+  #fountainG_#{$i} {
+    left: nth($position, $i);
+    animation-delay: nth($delay, $i);
+  }
+}
+
+@keyframes bounce_fountainG{
+	0%{
+  	transform:scale(1);
+  	background-color:rgb(79,207,72);
+	}
+
+	100%{
+	  transform:scale(.3);
+		background-color:rgba(255,255,255,0.36);
+	}
 }

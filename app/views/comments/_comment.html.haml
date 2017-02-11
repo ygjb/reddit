@@ -7,6 +7,6 @@
         %strong 
           =comment.user.email
         %span(class="text-muted")
-          =comment.created_at
+          = time_ago comment.created_at
       .card-block
         =comment.body
