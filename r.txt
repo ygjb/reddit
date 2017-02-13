@@ -1,0 +1,55 @@
+                         Prefix Verb   URI Pattern                        Controller#Action
+                           root GET    /                                  links#index
+                  link_comments POST   /links/:link_id/comments(.:format) comments#create
+                          links GET    /links(.:format)                   links#index
+                                POST   /links(.:format)                   links#create
+                       new_link GET    /links/new(.:format)               links#new
+                      edit_link GET    /links/:id/edit(.:format)          links#edit
+                           link GET    /links/:id(.:format)               links#show
+                                PATCH  /links/:id(.:format)               links#update
+                                PUT    /links/:id(.:format)               links#update
+                                DELETE /links/:id(.:format)               links#destroy
+               new_user_session GET    /user/sign_in(.:format)            devise/sessions#new
+                   user_session POST   /user/sign_in(.:format)            devise/sessions#create
+           destroy_user_session DELETE /user/sign_out(.:format)           devise/sessions#destroy
+              new_user_password GET    /user/password/new(.:format)       devise/passwords#new
+             edit_user_password GET    /user/password/edit(.:format)      devise/passwords#edit
+                  user_password PATCH  /user/password(.:format)           devise/passwords#update
+                                PUT    /user/password(.:format)           devise/passwords#update
+                                POST   /user/password(.:format)           devise/passwords#create
+       cancel_user_registration GET    /user/cancel(.:format)             devise/registrations#cancel
+          new_user_registration GET    /user/sign_up(.:format)            devise/registrations#new
+         edit_user_registration GET    /user/edit(.:format)               devise/registrations#edit
+              user_registration PATCH  /user(.:format)                    devise/registrations#update
+                                PUT    /user(.:format)                    devise/registrations#update
+                                DELETE /user(.:format)                    devise/registrations#destroy
+                                POST   /user(.:format)                    devise/registrations#create
+          new_user_confirmation GET    /user/confirmation/new(.:format)   devise/confirmations#new
+              user_confirmation GET    /user/confirmation(.:format)       devise/confirmations#show
+                                POST   /user/confirmation(.:format)       devise/confirmations#create
+                   api_v1_links GET    /api/v1/links(.:format)            api/v1/links#index
+                                POST   /api/v1/links(.:format)            api/v1/links#create
+                new_api_v1_link GET    /api/v1/links/new(.:format)        api/v1/links#new
+               edit_api_v1_link GET    /api/v1/links/:id/edit(.:format)   api/v1/links#edit
+                    api_v1_link GET    /api/v1/links/:id(.:format)        api/v1/links#show
+                                PATCH  /api/v1/links/:id(.:format)        api/v1/links#update
+                                PUT    /api/v1/links/:id(.:format)        api/v1/links#update
+                                DELETE /api/v1/links/:id(.:format)        api/v1/links#destroy
+        new_api_v1_user_session GET    /api/v1/login(.:format)            api/v1/sessions#new
+            api_v1_user_session POST   /api/v1/login(.:format)            api/v1/sessions#create
+    destroy_api_v1_user_session DELETE /api/v1/logout(.:format)           api/v1/sessions#destroy
+       new_api_v1_user_password GET    /api/v1/password/new(.:format)     api/v1/passwords#new
+      edit_api_v1_user_password GET    /api/v1/password/edit(.:format)    api/v1/passwords#edit
+           api_v1_user_password PATCH  /api/v1/password(.:format)         api/v1/passwords#update
+                                PUT    /api/v1/password(.:format)         api/v1/passwords#update
+                                POST   /api/v1/password(.:format)         api/v1/passwords#create
+cancel_api_v1_user_registration GET    /api/v1/cancel(.:format)           api/v1/registrations#cancel
+   new_api_v1_user_registration GET    /api/v1/sign_up(.:format)          api/v1/registrations#new
+  edit_api_v1_user_registration GET    /api/v1/edit(.:format)             api/v1/registrations#edit
+       api_v1_user_registration PATCH  /api/v1(.:format)                  api/v1/registrations#update
+                                PUT    /api/v1(.:format)                  api/v1/registrations#update
+                                DELETE /api/v1(.:format)                  api/v1/registrations#destroy
+                                POST   /api/v1(.:format)                  api/v1/registrations#create
+   new_api_v1_user_confirmation GET    /api/v1/confirmation/new(.:format) api/v1/confirmations#new
+       api_v1_user_confirmation GET    /api/v1/confirmation(.:format)     api/v1/confirmations#show
+                                POST   /api/v1/confirmation(.:format)     api/v1/confirmations#create
