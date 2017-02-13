@@ -8,6 +8,15 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
+user = User.new(
+      :email                 => 'vattgert@gmail.com',
+      :authentication_token  => Devise.friendly_token,
+      :password              => 'qwerty',
+      :password_confirmation => 'qwerty'
+)
+user.skip_confirmation!
+user.save!
+
 20.times do
   pass = Faker::Internet.password(10, 20, true, true)
   user = User.new(

@@ -1,5 +1,4 @@
-$(function() {
-  
+document.addEventListener("turbolinks:load", function() {
   var $input = $("form input[type='submit']");
   var $textarea = $("form textarea");
   $("#new_comment").submit(function(event) {
@@ -19,6 +18,6 @@ $(function() {
     $textarea.val("");
     $(".fountainG").css("animation-name", "0");
     $("#fountainG").css("visibility", "hidden");
-    console.log("sended")
+    console.log("sended!")
   });
 });

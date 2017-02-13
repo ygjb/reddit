@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @link.title %><br>
@@ -9,7 +7,7 @@
   <%= @link.user.email %><br>
 </p>
 <%-if user_signed_in?%>
-  <%= render 'comments/new', review: Comment.new(link_id: @link.id) %>
+  <%= render 'comments/new' %>
 <%-end%>
 
 <%= render 'comments/show', comments: @comments %>
