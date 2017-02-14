@@ -1,7 +1,7 @@
 class Api::V1::LinksController < Api::BaseApiController
   
   before_action :set_link, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user_from_token!, only: [:create]
+  before_action :authenticate_user_with_token!, only: [:create]
   
   def index
     @links = Link.links_per_page(params[:page])
@@ -17,7 +17,7 @@ class Api::V1::LinksController < Api::BaseApiController
       # @link = @link.to_hash
       render json: @link, include: ['comments'], status: 200
     else
-      render json: {:error => "page not found"}, status: 404
+      render json: { :error => "page not found" }, status: 404
     end
   end
   
@@ -35,6 +35,6 @@ class Api::V1::LinksController < Api::BaseApiController
       @link = Link.find_by(id: params[:id])
     end
     def link_params
-      params.require(:link).permit(:title, :url, :user_id)
+      params.require(:link).permit(:title, :url)
     end
 end

@@ -24,7 +24,7 @@ class Api::V1::SessionsController < DeviseController
   protected
     def ensure_params_exist
       return unless params[:user_login].blank?
-      render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status => 422
+      render json: { success: false, message: "missing user_login parameter" }, :status => 422
     end
   
     def invalid_login_attempt

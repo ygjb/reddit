@@ -1,26 +1,29 @@
 class Api::BaseApiController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
-  
   respond_to :json
   
   protected
-    def user_params
-      params[:user].permit(:email, :password, :password_confirmation)
+    def authenticate_user_with_token!
+      unless params[:user].blank?
+        user = User.find_by_email(params[:user][:user_email])
+        
+        if user && Devise.secure_compare(user.token_authenticatable, params[:auth_token])
+          sign_in user, store: false
+        else
+          return invalid_login_attempt unless user
+        end
+        
+        else
+          missing_params
+      end
     end
-    # def authenticate_user_from_token!
-      
-    #   ensure_params_exist(:auth_token)
-    #   ensure_params_exist(:user_email)
-      
-    #   user = User.find_by_email(params[:user][:user_email])
-    #   user = User.find_by(token_authenticatable: params[:user][:auth_token])
-      
-    #   if user #&& Devise.secure_compare(user.authenticatable_salt, params[:auth_token])
-    #     sign_in user, store: false
-    #   end
-    # end
-    # def ensure_params_exist param
-    #   return unless params[param].blank?
-    #   render :json=>{:success => false, :message => "missing #{param} parameter"}, :status => 400
-    # end
+    
+  private
+    def missing_params
+      render json: { success: false, message: "missing :user parameter" }, :status => 422
+    end
+    
+    def invalid_login_attempt
+      render json: { success: false, message: "Error with your auth_token or user_email"}, status: :unauthorized
+    end
 end
