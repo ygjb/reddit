@@ -1,3 +1,33 @@
-// Place all the styles related to the links controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.link{
+  padding: 1rem 1rem;
+  border-bottom: 1px solid rgba(0, 150, 136, 0.86);
+  a{
+    color: #795548 !important;
+  }
+  .border{
+    background-color: #4CAF50;
+    padding: .3rem 1rem;
+  }
+}
+.like-area {
+  margin-top: -20px;
+  padding: .2rem 1rem .2rem 0rem;
+  .like{
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+  }
+  .like-count{
+    font-size: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: context-menu;
+  }
+}
+.octicon{
+  display: block;
+  color: #bbc;//#fea
+  vertical-align: text-top;
+  fill: currentColor;
+}

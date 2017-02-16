@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
+  #icons 
+  gem 'octicons_helper'
+  
   gem 'simple_token_authentication', '~> 1.0'
   
   gem "paperclip", "~> 5.0.0"

@@ -28,9 +28,6 @@ module ApplicationHelper
   #   paginator
   # end
   def time_ago(time)
-    "#{time_ago_in_words(time)} ago."
-  end
-  def include_js(name)
-    content_for(:head) { javascript_include_tag name,'data-turbolinks-track': 'reload'}
+    "#{time_ago_in_words(time)} ago"
   end
 end

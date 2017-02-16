@@ -1,0 +1,17 @@
+%div{:class => "row link"}
+  %div{:class => "like-area"}
+    %div{:class => "like"}
+      = octicon "chevron-up" , :height => 48,  :class => "octicon", :"aria-label" => "hi"
+    %div{:class => "like like-count"}
+      0
+    %div{:class => "like"}
+      = octicon "chevron-down", :height => 48,  :class => "octicon", :"aria-label" => "hi"
+  %div{:class => "link-content w-80"}
+    %h4{:class => "font-weight-normal"} 
+      =link_to link.title, link
+    %div{:class => "created-at text-muted"}
+      %small{:class=> "author"} 
+      Submitted 
+      = time_ago(link.created_at) 
+      by 
+      = link.user.email

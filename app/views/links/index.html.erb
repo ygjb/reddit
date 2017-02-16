@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="display-3" >Links</h1>
-
-<div id="paginator">
-  <%= paginate @links %>
+<div class="col-md-8 m-auto">
+  <div id="links">
+    <%= render @links %>
+  </div>
 </div>
 
-<div id="links">
-  <%= render @links %>
-</div>
 
-<%= link_to 'New Link', new_link_path %>
+<div class="row justify-content-md-center">
+  <div id="paginator">
+    <%= paginate @links %>
+  </div>
+</div>

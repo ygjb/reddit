@@ -1,3 +1,8 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import "comments";
+
+@import "links";
+body {
+  background-color: rgba(246, 247, 248, 0.14) !important;
+}
