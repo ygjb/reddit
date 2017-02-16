@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :check_current_user?, only: [:create]
+  before_action :authenticate_user!, only: [:create]
   def create
     @comment = current_user.comments.new(comment_params)
     respond_to do |format|
