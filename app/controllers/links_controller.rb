@@ -16,7 +16,6 @@ class LinksController < ApplicationController
   end
 
   def edit
-    byebug
   end
 
   def create

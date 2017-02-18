@@ -1,0 +1,12 @@
+%div{:class => "sup"}
+  %div{:class => "comment-info"}
+    %p{:class => "d-inline"} 
+      =octicon "comment", :height => 16,  :class => "d-inline mt-1"
+      = link.comments.count == 0 ? 0 : link.comments.count
+      comments 
+    -if link.user == current_user 
+      %div{:class => "links-group d-inline"}
+        = link_to edit_link_path(link)  do
+          = octicon("pencil", :height => 16, :class => "d-inline mt-1")
+          edit
+        = link_to 'destroy', link, method: :delete, data: { confirm: 'Are you sure?' }
