@@ -2,32 +2,33 @@
   padding: 1rem 1rem;
   border-bottom: 1px solid rgba(0, 150, 136, 0.86);
   a{
-    color: #795548 !important;
+    color: #652812 !important;
   }
-  .border{
-    background-color: #4CAF50;
-    padding: .3rem 1rem;
+  .link-content {
+    position: absolute;
+    padding-left: 70px;
+    z-index:1000;
+    right: 0;
   }
 }
 .like-area {
-  margin-top: -20px;
-  padding: .2rem 1rem .2rem 0rem;
+  position: relative;
+  z-index: 1003;
   .like{
-    height: 30px;
-    cursor: pointer;
-    margin-bottom: 5px;
-    box-sizing: border-box;
-  }
-  .like-count{
-    font-size: 30px;
+    span.octicon {
+      font-size: 3rem;
+      cursor: pointer;
+    }
+    font-size: 24px;
     text-align: center;
-    box-sizing: border-box;
-    cursor: context-menu;
   }
 }
 .octicon{
-  display: block;
   color: #bbc;//#fea
-  vertical-align: text-top;
   fill: currentColor;
+}
+.links-group{
+  a:hover{
+    text-decoration: none;
+  }
 }

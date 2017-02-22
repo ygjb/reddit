@@ -1,12 +1,14 @@
 %div{:class => "row link"}
-  %div{:class => "like-area"}
+  %div{:class => "like-area w-10"}
     %div{:class => "like"}
-      = octicon "chevron-up" , :height => 48,  :class => "octicon", :"aria-label" => "like"
+      %span(class="octicon octicon-chevron-up")
+      // = octicon "chevron-up", :height => 64, :width => 40, :class => "octicon", :aria => {:hidden=> true}
     %div{:class => "like like-count"}
       0
     %div{:class => "like"}
-      = octicon "chevron-down", :height => 48,  :class => "octicon", :"aria-label" => "dislike"
-  %div{:class => "link-content w-80"}
+      %span(class="octicon octicon-chevron-down")
+      // = octicon "chevron-down", :height => 64, :width => 40, :class => "octicon", :aria => {:hidden=> true}
+  %div{:class => "link-content w-100"}
     %h4{:class => "font-weight-normal"} 
       =link_to link.title, link
     = render "support_area", :link => link
