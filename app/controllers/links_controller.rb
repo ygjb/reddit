@@ -21,7 +21,7 @@ class LinksController < ApplicationController
   def create
     @link = current_user.links.new(link_params)
     if @link.save
-      redirect_back(fallback_location: @link, notice: 'Link was successfully created.')
+     redirect_to links_url, notice: 'Link was successfully created.'
     else
       render :new
     end
