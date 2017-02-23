@@ -24,5 +24,12 @@ test:
   database: db/reddit_test
 
 production:
-  <<: *default
-  database: db/reddit_production
+  database: d73c479vamtgf1
+  adapter: postgresql
+  encoding: utf8
+  host: ec2-54-204-0-88.compute-1.amazonaws.com
+  password: 22667c4ecbdb3756475f6b0038c727c43316d5b3053ec99b3fd05be3d1c84225
+  user: nuovmgvpnoxazx
+  port: 5432
+  uri: postgres://nuovmgvpnoxazx:22667c4ecbdb3756475f6b0038c727c43316d5b3053ec99b3fd05be3d1c84225@ec2-54-204-0-88.compute-1.amazonaws.com:5432/d73c479vamtgf1Heroku CLI
+heroku pg:psql postgresql-clean-53822 --app aqueous-beyond-27541
