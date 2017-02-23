@@ -4,7 +4,8 @@ document.addEventListener("turbolinks:load", function () {
   var $input = $("form input[type='submit']");
   var $textarea = $("form textarea");
   $("#new_comment").submit(function (event) {
-    let value = $textarea.val();
+    var textarea = $textarea;
+    var value = textarea.val();
     if (value.length > 0) {
       $(".fountainG").css("animation-name", "bounce_fountainG");
       $("#fountainG").css("visibility", "visible");
