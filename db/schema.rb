@@ -12,26 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170210194234) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.integer  "link_id"
     t.integer  "user_id"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["link_id"], name: "index_comments_on_link_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string   "imageable_type"
-    t.integer  "imageable_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+    t.index ["link_id"], name: "index_comments_on_link_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "links", force: :cascade do |t|
@@ -40,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170210194234) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_links_on_user_id"
+    t.index ["user_id"], name: "index_links_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,10 +52,13 @@ ActiveRecord::Schema.define(version: 20170210194234) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.string   "authentication_token",   limit: 30
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "links"
+  add_foreign_key "comments", "users"
+  add_foreign_key "links", "users"
 end
