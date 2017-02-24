@@ -1,7 +1,7 @@
 class MyDeviseMailer < PostageApp::Mailer
   include Devise::Mailers::Helpers
 
-  def confirmation_instructions(record)
+  def confirmation_instructions(record, token, opts = {})
     postageapp_template 'my-signup-confirmation'
     postageapp_variables :email => record.email,
                          :link  => confirmation_url(record, :confirmation_token => record.confirmation_token)
@@ -9,7 +9,7 @@ class MyDeviseMailer < PostageApp::Mailer
     devise_mail(record, :confirmation_instructions)
   end
 
-  def reset_password_instructions(record)
+  def reset_password_instructions(record, token, opts = {})
     postageapp_template 'my-password-reset'
     postageapp_variables :name  => record.name ||= record.email,
                          :link  => password_url(record, :reset_password_token => record.reset_password_token)
