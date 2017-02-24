@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # default_url_options :host => "example.com"
-  
   root 'links#index'
   resources :links do
     resources :comments, only: [:create]
