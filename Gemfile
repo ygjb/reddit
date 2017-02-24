@@ -7,7 +7,7 @@ end
 
 group :development, :production do
   gem 'simple_token_authentication', '~> 1.0'
-  
+  gem 'postageapp'
   gem "paperclip", "~> 5.0.0"
   #gem "aws-sdk", "~>2"
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
