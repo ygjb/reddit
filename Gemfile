@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
+  gem 'rollbar'
   gem 'rails_12factor'
   gem 'simple_token_authentication', '~> 1.0'
   gem 'postageapp'
