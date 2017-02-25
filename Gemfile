@@ -6,9 +6,10 @@ git_source(:github) do |repo_name|
 end
 
 group :development, :production do
+  gem 'rails_12factor'
   gem 'simple_token_authentication', '~> 1.0'
   gem 'postageapp'
-  gem 'sendgrid-ruby'
+  # gem 'sendgrid-ruby'
   gem "paperclip", "~> 5.0.0"
   #gem "aws-sdk", "~>2"
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
@@ -42,7 +43,7 @@ group :development, :production do
 end
 group :production do
   # Use Redis adapter to run Action Cable in production
-  gem 'pg'
+  # gem 'pg'
   gem 'redis', '~> 3.0'
 end
 # See https://github.com/rails/execjs#readme for more supported runtimes
