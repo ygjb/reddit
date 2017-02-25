@@ -53,3 +53,6 @@ cancel_api_v1_user_registration GET    /api/v1/cancel(.:format)           api/v1
    new_api_v1_user_confirmation GET    /api/v1/confirmation/new(.:format) api/v1/confirmations#new
        api_v1_user_confirmation GET    /api/v1/confirmation(.:format)     api/v1/confirmations#show
                                 POST   /api/v1/confirmation(.:format)     api/v1/confirmations#create
+
+
+sudo service postgresql start
