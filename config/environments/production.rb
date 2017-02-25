@@ -81,7 +81,7 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
-  
+  config.action_mailer.default_url_options = { :host => 'aqueous-beyond-27541.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address              =>  'smtp.sendgrid.net',
