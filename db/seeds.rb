@@ -8,11 +8,11 @@
 # user.skip_confirmation!
 # user.save!
 
-user = User.new(
-      :email                 => 'vattgert@gmail.com',
-      :authentication_token  => Devise.friendly_token,
-      :password              => 'qwerty',
-      :password_confirmation => 'qwerty'
-)
-user.skip_confirmation!
-user.save!
+# user = User.new(
+#       :email                 => 'vattgert@gmail.com',
+#       :authentication_token  => Devise.friendly_token,
+#       :password              => 'qwerty',
+#       :password_confirmation => 'qwerty'
+# )
+# user.skip_confirmation!
+# user.save!

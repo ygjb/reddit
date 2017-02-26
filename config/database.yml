@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: postgresql
-  encoding: utf8
+  encoding: SQL_ASCII
   pool: 5
   username: ubuntu
   password: masseffect44
