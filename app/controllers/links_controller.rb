@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :checking_of_equality, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:show, :index]

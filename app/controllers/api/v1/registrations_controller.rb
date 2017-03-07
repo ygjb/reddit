@@ -10,7 +10,8 @@ class Api::V1::RegistrationsController < Api::BaseApiController
       render json: user.errors, status: :unprocessable_entity
     end
   end
-  def user_params
-     params.require(:new_user).permit(:email, :password, :password_confirmation)
-  end
+  private
+    def user_params
+      params.require(:new_user).permit(:email, :password, :password_confirmation)
+    end
 end
