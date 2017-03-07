@@ -2,7 +2,7 @@ class Link < ApplicationRecord
   paginates_per(30)
   
   belongs_to :user
-  has_many :comments
+  has_many :comments, as: :commentable
   validates :url, presence: true, http_url: true
   validates :title, presence: true
   
