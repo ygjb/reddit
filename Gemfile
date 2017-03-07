@@ -9,7 +9,7 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :production do
-  gem 'rails', '~> 5.0.1'
+  gem 'rails', '~> 5.0.2'
   
   gem 'pg'
   gem 'devise'
@@ -44,5 +44,3 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -60,11 +60,12 @@ Rails.application.configure do
     domain:               'gmail.com',
     user_name:            ENV['GMAIL_USERNAME'],
     password:             ENV['GMAIL_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true
+    authentication:       'plain'
+    # enable_starttls_auto: true
   }
-  
+  # ENV['GMAIL_USERNAME']
+  # ENV['GMAIL_PASSWORD']
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
