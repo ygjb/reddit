@@ -58,10 +58,10 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'andrijmessia@gmail.com',
-    password:             'masseffect44',
+    user_name:            ENV['GMAIL_USERNAME'],
+    password:             ENV['GMAIL_PASSWORD'],
     authentication:       'plain',
-    # enable_starttls_auto: true  
+    enable_starttls_auto: true  
   }
   
   # Use an evented file watcher to asynchronously detect changes in source code,
