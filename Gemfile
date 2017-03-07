@@ -9,10 +9,8 @@ group :development, :production do
   gem 'rollbar'
   gem 'rails_12factor'
   gem 'simple_token_authentication', '~> 1.0'
-  gem 'postageapp'
-  # gem 'sendgrid-ruby'
+
   gem "paperclip", "~> 5.0.0"
-  #gem "aws-sdk", "~>2"
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
   gem 'haml', '~> 4.0', '>= 4.0.7'
   #Bootstrap Ruby Gem
