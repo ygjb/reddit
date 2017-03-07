@@ -43,7 +43,10 @@ Rails.application.configure do
   config.assets.debug = true
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
+  
+  config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+    html_tag
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.delivery_method = :smtp
