@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable,  :validatable
          
   has_many :links
+  has_many :likes
   has_many :comments
   
   #has_one :avatar, :class_name => "Image", :as => :imageable, :dependent => :destroy
