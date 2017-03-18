@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  # default_url_options :host => "example.com"
   root 'links#index'
-  resources :links do
-    resources :comments, only: [:create]
-  end
+  
+  resources :comments, only: [:create]
+  resources :links
   devise_for :user
+  
+  match '/likes/upvote/:id/:type' => 'likes#upvote', via: :put, :as => :upvote
+  match '/likes/downvote/:id/:type' => 'likes#downvote', via: :put, :as => :downvote
   
   namespace :api do
     namespace :v1, format: :json do
