@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12 col-lg-12">
-		<%= form_for [@link, Comment.new], :remote => true do |f| %>
+		<%= form_for @comment, :remote => true do |f| %>
 		  <div class="field">
 		    <%= f.text_area :body, class: "form-control col-lg-8 col-sm-12", placeholder: "Provide comment here." %>
 		    <div id="fountainG">
@@ -13,8 +13,8 @@
 					<div id="fountainG_7" class="fountainG"></div>
 					<div id="fountainG_8" class="fountainG"></div>
 				</div>
-		    <%= f.hidden_field :link_id, :value => @link.id%>
-		    <%= f.hidden_field :user_id, :value => current_user.id%>
+		    <%= f.hidden_field :link_id, value: @link.id %>
+		    <%= f.hidden_field :user_id, value: current_user.id %>
 		  </div>
 		  <div class="buttons-area col-lg-8 col-sm-12">
 		  	<div class="d-flex flex-row justify-content-end">

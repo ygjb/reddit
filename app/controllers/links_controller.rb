@@ -9,6 +9,7 @@ class LinksController < ApplicationController
   end
 
   def show
+    @comment = current_user.comments.new
     @comments = @link.comments.order(id: :DESC)
   end
 

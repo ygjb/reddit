@@ -1,20 +1,22 @@
 %div{:class => "row link"}
   %div{:class => "like-area w-10"}
-    %div{:class => "like"}
-      %span(class="octicon octicon-chevron-up")
-      // = octicon "chevron-up", :height => 64, :width => 40, :class => "octicon", :aria => {:hidden=> true}
+    %div{:class => "like upvote"}
+      =link_to upvote_path(link.id, "Link"), method: :put, :remote => true do
+        // =active_like link
+        %span(class="octicon octicon-chevron-up")
     %div{:class => "like like-count"}
-      0
+      =all_like(link.likes)
     %div{:class => "like"}
-      %span(class="octicon octicon-chevron-down")
-      // = octicon "chevron-down", :height => 64, :width => 40, :class => "octicon", :aria => {:hidden=> true}
+      =link_to downvote_path(link.id,"Link"), method: :put, :remote => true do
+        
+        %span(class="octicon octicon-chevron-down")
   %div{:class => "link-content w-100"}
     %h4{:class => "font-weight-normal"} 
       =link_to link.title, link
     = render "support_area", :link => link
     %div{:class => "created-at text-muted"}
       %small{:class=> "author"} 
-      Submitted 
+      Submitted
       = time_ago(link.created_at) 
       by 
       = link.user.email
