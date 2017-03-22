@@ -1,6 +1,6 @@
                          Prefix Verb   URI Pattern                        Controller#Action
                            root GET    /                                  links#index
-                  link_comments POST   /links/:link_id/comments(.:format) comments#create
+                       comments POST   /comments(.:format)                comments#create
                           links GET    /links(.:format)                   links#index
                                 POST   /links(.:format)                   links#create
                        new_link GET    /links/new(.:format)               links#new
@@ -27,6 +27,7 @@
           new_user_confirmation GET    /user/confirmation/new(.:format)   devise/confirmations#new
               user_confirmation GET    /user/confirmation(.:format)       devise/confirmations#show
                                 POST   /user/confirmation(.:format)       devise/confirmations#create
+                         upvote PUT    /likes/upvote/:id/:type(.:format)  likes#upvote
                    api_v1_links GET    /api/v1/links(.:format)            api/v1/links#index
                                 POST   /api/v1/links(.:format)            api/v1/links#create
                 new_api_v1_link GET    /api/v1/links/new(.:format)        api/v1/links#new
@@ -44,7 +45,7 @@
                                 PUT    /api/v1/password(.:format)         api/v1/passwords#update
                                 POST   /api/v1/password(.:format)         api/v1/passwords#create
 cancel_api_v1_user_registration GET    /api/v1/cancel(.:format)           api/v1/registrations#cancel
-   new_api_v1_user_registration GET    /api/v1/sign_up(.:format)          api/v1/registrations#new
+   new_api_v1_user_registration GET    /api/v1/sing_up(.:format)          api/v1/registrations#new
   edit_api_v1_user_registration GET    /api/v1/edit(.:format)             api/v1/registrations#edit
        api_v1_user_registration PATCH  /api/v1(.:format)                  api/v1/registrations#update
                                 PUT    /api/v1(.:format)                  api/v1/registrations#update
@@ -53,6 +54,3 @@ cancel_api_v1_user_registration GET    /api/v1/cancel(.:format)           api/v1
    new_api_v1_user_confirmation GET    /api/v1/confirmation/new(.:format) api/v1/confirmations#new
        api_v1_user_confirmation GET    /api/v1/confirmation(.:format)     api/v1/confirmations#show
                                 POST   /api/v1/confirmation(.:format)     api/v1/confirmations#create
-
-
-sudo service postgresql start

@@ -7,8 +7,8 @@ class Api::V1::SessionsController < DeviseController
   def create
     resource = User.find_for_database_authentication(:email=>params[:user_login][:email])
     return invalid_login_attempt unless resource
-
     if resource.valid_password?(params[:user_login][:password])
+      # render json: {error: true} unless
       sign_in("user", resource)
       render json: { success: true, auth_token: resource.authentication_token, email: resource.email}, status: :ok
       return

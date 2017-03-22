@@ -21,3 +21,4 @@ config/environment_variables.yml
 config/secrets.yml
 # Ignore Byebug command history file.
 .byebug_history
+r.txt
