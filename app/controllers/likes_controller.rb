@@ -24,8 +24,6 @@ class LikesController < ApplicationController
     end
   end
   
-  
-  
   private
     def like_exist
       @like = Like.find_by(likeable_id: params[:id], user_id: current_user.id)
@@ -48,5 +46,4 @@ class LikesController < ApplicationController
         end
       end
     end
-    
 end
