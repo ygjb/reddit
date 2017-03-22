@@ -48,5 +48,14 @@ class LikesController < ApplicationController
         end
       end
     end
-    
+    def save_like like
+      respond_to do |format|
+        if like.save
+          format.html { redirect_to root_path, notice: 'Like was successfully created.' }
+          format.js   { }
+        else
+          format.html { render :new }
+        end
+      end
+    end
 end
