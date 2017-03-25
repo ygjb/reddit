@@ -6,13 +6,16 @@ class LinksController < ApplicationController
   
   def index
     @links = Link.order(id: :desc).page params[:page]
+    respond_to do |format|
+      format.html
+      format.json {  render json: { :links => @links}, status: 200 }
+    end
   end
 
   def show
     if user_signed_in?
      @comment = current_user.comments.new
     end
-      
     @comments = @link.comments.order(id: :DESC)
   end
 

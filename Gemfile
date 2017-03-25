@@ -9,19 +9,7 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :production do
-<<<<<<< HEAD
   gem 'rails', '~> 5.0.2'
-=======
-  gem 'rollbar'
-  gem 'rails_12factor'
-  gem 'simple_token_authentication', '~> 1.0'
-
-  gem "paperclip", "~> 5.0.0"
-  gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
-  gem 'haml', '~> 4.0', '>= 4.0.7'
-  #Bootstrap Ruby Gem
-  gem 'bootstrap', '~> 4.0.0.alpha6'
->>>>>>> db0737c03ecf27b11e94e51f8cc5515e1173664d
   
   gem 'pg'
   gem 'devise'
