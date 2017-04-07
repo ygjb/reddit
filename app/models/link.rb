@@ -27,6 +27,4 @@ class Link < ApplicationRecord
       throw :abort
     end
   end
-  
-  include ActiveRecordExtension
 end

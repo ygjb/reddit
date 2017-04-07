@@ -31,7 +31,13 @@ class Like < ApplicationRecord
       @like.save
     end
   }
+  
   scope :likes_count, -> (link){
-    
+    like_count_for_link = where(likeable_id: link)
+    count = 0
+    # byebug
+    like_count_for_link.each do |item|
+    end
   }
+  
 end
