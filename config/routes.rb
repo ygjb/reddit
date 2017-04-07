@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :links
   devise_for :user
   
-  match '/likes/upvote/:id/:type' => 'likes#upvote', via: :put, :as => :upvote
-  match '/likes/downvote/:id/:type' => 'likes#downvote', via: :put, :as => :downvote
+  match '/likes/create_like/:id/:type/:method' => 'likes#create', via: :put, :as => :create_like
   
   namespace :api do
     namespace :v1, format: :json do

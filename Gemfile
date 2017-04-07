@@ -9,6 +9,9 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :production do
+  #Create JSON structures via a Builder-style DSL
+  gem 'jbuilder', '~> 2.6', '>= 2.6.3'
+  
   gem 'rails', '~> 5.0.2'
   
   gem 'pg'

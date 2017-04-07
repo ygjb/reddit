@@ -6,10 +6,6 @@ class LinksController < ApplicationController
   
   def index
     @links = Link.order(id: :desc).page params[:page]
-    respond_to do |format|
-      format.html
-      format.json {  render json: { :links => @links}, status: 200 }
-    end
   end
 
   def show
