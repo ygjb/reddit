@@ -5,11 +5,10 @@ class Api::V1::LinksController < Api::BaseApiController
   
   def index
     @links = Link.links_per_page(params[:page])
-    render json: {links: @links}, status: 200
+    render json: {links: @links.as_json(:except => [:updated_at])}, status: 200
   end
   def show
-    render json: @link, :include => [:comments], :except => [:updated_at]
-    # render :json => @link, :except => [:created_at, :updated_at]
+    render json: @link.as_json(include: {comments: { :except => [:updated_at] } }, :except => [:updated_at]) , status: 200
   end
   
   def create
@@ -23,9 +22,14 @@ class Api::V1::LinksController < Api::BaseApiController
   
    private
     def set_link
+      render_errors({:error_msg => "missing params", :status => 400}) unless Integer(params[:id])
       @link = Link.find_by(id: params[:id])
+      render_errors({:error_msg => "link id_#{params[:id]} not found", :status => 404}) unless @link
     end
     def link_params
       params.require(:link).permit(:title, :url)
+    end
+    def render_errors(options={})
+      render json: {:error => options[:error_msg]},status: options[:status]
     end
 end
