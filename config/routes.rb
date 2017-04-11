@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'links#index'
   
+  devise_for :users #do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'
+  # end
   resources :comments, only: [:create]
   resources :links
-  devise_for :user
   
   match '/likes/create_like/:id/:type/:method' => 'likes#create', via: :put, :as => :create_like
   

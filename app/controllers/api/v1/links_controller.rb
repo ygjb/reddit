@@ -1,10 +1,12 @@
 class Api::V1::LinksController < Api::BaseApiController
-  
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user_with_token!, only: [:create]
-  
+  # TODO: 
+  # create, update adn delete delete
+  #
   def index
     @links = Link.links_per_page(params[:page])
+    render_errors({:error_msg => "link id_#{params[:id]} not found", :status => 404}) unless @link
     render json: {links: @links.as_json(:except => [:updated_at])}, status: 200
   end
   def show

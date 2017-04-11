@@ -16,11 +16,11 @@ module Reddit
           ENV[key.to_s] = value
         end 
       end 
-    end 
-    config.middleware.delete Rack::Sendfile
-    config.middleware.delete Rack::MethodOverride
-    config.middleware.delete ActionDispatch::Cookies
-    config.middleware.delete ActionDispatch::Session::CookieStore
-    config.middleware.delete ActionDispatch::Flash
+    end
+    # config.middleware.delete Rack::Sendfile
+    # config.middleware.delete Rack::MethodOverride
+    # config.middleware.delete ActionDispatch::Cookies
+    # config.middleware.delete ActionDispatch::Session::CookieStore
+    # config.middleware.delete ActionDispatch::Flash
   end
 end
