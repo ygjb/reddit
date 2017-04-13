@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">
+      <a href="<%= @post.link_url %>">
+        <%= @post.title%>
+      </a>
+    </h4>
+    <h6 class="card-subtitle mb-2 text-muted">Submited <%= time_ago(@post.created_at)%> by <%= @post.user.email%></h6>
+    <a href="<%= @post.link_url %>">Visit link</a>
+  </div>
+</div>
+<hr>
+<%-if user_signed_in?%>
+  <%= render 'comments/new' %>
+<%-end%>
+
+<%= render 'comments/show', comments: @comments %>

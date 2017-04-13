@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root 'links#index'
-  
+  root 'posts#index'
+
+  resources :posts
+
   resources :comments, only: [:create]
-  resources :links
+
   devise_for :user
   
   match '/likes/upvote/:id/:type' => 'likes#upvote', via: :put, :as => :upvote
