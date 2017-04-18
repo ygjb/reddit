@@ -1,14 +1,3 @@
-<<<<<<< HEAD:app/models/post.rb
-class Post < ApplicationRecord
-  belongs_to :user
-  has_many :comments, as: :commentable
-  has_many :likes, as: :likeable
-  paginates_per(30)
-  
-  validates :link_url, presence: true, http_url: true
-  validates :body_text, presence: true
-  validates :img_url, presence: true
-=======
 class Link < ApplicationRecord
   attr_accessor :type
   paginates_per(30)
@@ -23,7 +12,6 @@ class Link < ApplicationRecord
   
   validates :url, presence: true, http_url: true
   validates :title, presence: true
->>>>>>> json_builder:app/models/link.rb
   
   before_create :exists_posts
   
