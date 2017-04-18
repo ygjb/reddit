@@ -1,4 +1,13 @@
-<!--< render 'layouts/error', obj: @link%>-->
+<%= render 'layouts/error', obj: @post%>
+<script>  
+  try{
+    let _type = "<%= session[:post_type] unless session[:post_type] == nil %>"
+    history.pushState({type: _type}, `New ${_type}`, `?type=${_type}`);
+    location.hash = '';
+  }catch(ex){
+    console.log(ex);
+  }
+</script>
 <%= form_for(@post) do |f| %>
   <div class="form-group row">
     <%= f.label :title, :class => "col-2 col-form-label"%>

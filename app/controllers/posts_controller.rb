@@ -3,12 +3,12 @@ class PostsController < ApplicationController
   before_action :checking_of_equality, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:show, :index]
   def index
-    @post = Post.all # order(id: :desc).page params[:page]
+    @post = Post.order(id: :desc).page params[:page]
   end
 
   def show
     if user_signed_in?
-     @comment = current_user.comments.new
+      @comment = current_user.comments.new
     end
     @comments = @post.comments.order(id: :DESC)
   end
@@ -22,11 +22,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug 
+    # byebug 
     @post = current_user.posts.new(post_params)
     if @post.save
-     redirect_to posts_url, notice: 'Link was successfully created.'
+      redirect_to posts_url, notice: 'Link was successfully created.'
     else
+      set_visitor_sessions params[:post][:post_type]
       render :new
     end
   end
@@ -39,6 +40,9 @@ class PostsController < ApplicationController
     
   end
   private
+    def set_visitor_sessions param
+      session[:post_type] = param
+    end
     def set_link
       @post = Post.find_by(id: params[:id]) or render(:not_found, status: 404)
     end
@@ -55,7 +59,7 @@ class PostsController < ApplicationController
       end
     end
     def checking_of_equality
-      unless @link.user == current_user
+      unless @post.user == current_user
         redirect_back(fallback_location: root_path, notice: 'You are not the creator of the news!')
       end
     end
