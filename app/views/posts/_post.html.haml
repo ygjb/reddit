@@ -1,12 +1,12 @@
 %div{:class => "row link"}
   %div{:class => "like-area w-10"}
     %div{:class => "like upvote"}
-      =link_to upvote_path(post.id, "Post"), method: :put, :remote => true do
+      =link_to create_like_path(post.id, "Post", :upvote), method: :put, :remote => true do
         %span(class="octicon octicon-chevron-up")
     %div{:class => "like like-count"}
       =all_like post.likes
     %div{:class => "like"}
-      =link_to downvote_path(post.id,"Post"), method: :put, :remote => true do
+      =link_to create_like_path(post.id,"Post",:downvote), method: :put, :remote => true do
         %span(class="octicon octicon-chevron-down")
   %div{:class => "link-content w-100"}
     %h4{:class => "font-weight-normal"} 
