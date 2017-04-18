@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   root 'posts#index'
 
   resources :posts
@@ -6,9 +7,17 @@ Rails.application.routes.draw do
   resources :comments, only: [:create]
 
   devise_for :user
+=======
+  root 'links#index'
   
-  match '/likes/upvote/:id/:type' => 'likes#upvote', via: :put, :as => :upvote
-  match '/likes/downvote/:id/:type' => 'likes#downvote', via: :put, :as => :downvote
+  devise_for :users #do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'
+  # end
+  resources :comments, only: [:create]
+  resources :links
+>>>>>>> json_builder
+  
+  match '/likes/create_like/:id/:type/:method' => 'likes#create', via: :put, :as => :create_like
   
   namespace :api do
     namespace :v1, format: :json do

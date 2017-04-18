@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/models/post.rb
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable
@@ -7,6 +8,22 @@ class Post < ApplicationRecord
   validates :link_url, presence: true, http_url: true
   validates :body_text, presence: true
   validates :img_url, presence: true
+=======
+class Link < ApplicationRecord
+  attr_accessor :type
+  paginates_per(30)
+  
+  belongs_to :user
+  has_many :comments, as: :commentable
+  has_many :likes, as: :likeable
+  def self.type
+    self.class.name
+  end
+  # accepts_nested_attributes_for :comments
+  
+  validates :url, presence: true, http_url: true
+  validates :title, presence: true
+>>>>>>> json_builder:app/models/link.rb
   
   before_create :exists_posts
   

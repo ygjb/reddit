@@ -1,0 +1,7 @@
+try{
+  var like = ('<%= @like.to_json %>')
+  var res = like.replace(/&quot;/gi, "\"");
+  console.log(res);
+}catch(error){
+  console.log(error);
+}

@@ -9,8 +9,13 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :production do
-  gem 'rails', '~> 5.0.2'
+  #Create JSON structures via a Builder-style DSL
+  gem 'jbuilder', '~> 2.6', '>= 2.6.3'
   
+  gem 'rails', '~> 5.0.2'
+  gem 'oj' # for cyrillic symbols
+  # gem 'rails-api'
+  gem 'oj_mimic_json'
   gem 'pg'
   gem 'devise'
   gem 'rollbar'
