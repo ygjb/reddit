@@ -1,20 +1,20 @@
 %div{:class => "row link"}
   %div{:class => "like-area w-10"}
     %div{:class => "like upvote"}
-      =link_to create_like_path(link.id, "Link", "upvote"), method: :put, :remote => true do
+      =link_to upvote_path(post.id, "Post"), method: :put, :remote => true do
         %span(class="octicon octicon-chevron-up")
-    %div{:class => "like like-count link_id_#{link.id}"}
-      =all_like(link.likes)
+    %div{:class => "like like-count"}
+      =all_like post.likes
     %div{:class => "like"}
-      =link_to create_like_path(link.id,"Link", "downvote"), method: :put, :remote => true do
+      =link_to downvote_path(post.id,"Post"), method: :put, :remote => true do
         %span(class="octicon octicon-chevron-down")
   %div{:class => "link-content w-100"}
     %h4{:class => "font-weight-normal"} 
-      =link_to link.title, link
-    = render "support_area", :link => link
+      =link_to post.title, post
+    = render "support_area", :post => post
     %div{:class => "created-at text-muted"}
       %small{:class=> "author"} 
       Submitted
-      = time_ago(link.created_at) 
+      = time_ago(post.created_at) 
       by 
-      = link.user.email
+      = post.user.email

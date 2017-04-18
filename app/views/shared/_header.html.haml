@@ -8,16 +8,18 @@
     %div{:class => "collapse navbar-collapse", :id => "navbarText"}
       %ul{:class => "navbar-nav mr-auto"}
         %li{:class => "nav-item"}
-          = link_to 'Links', links_path, :class => 'nav-link'
+          = link_to 'Add link', new_post_path(:post_type => "Link"), :class => 'nav-link'
         %li{:class => "nav-item"}
-          = link_to 'New link', new_link_path , :class => 'nav-link'
+          = link_to 'Add image', new_post_path(:post_type => "Image"), :class => 'nav-link'
+        %li{:class => "Add text"}
+          = link_to 'New Text', new_post_path(:post_type => "Text"), :class => 'nav-link'
         %li{:class => "nav-item"}
           = link_to 'About', '#', :class => 'nav-link'
         %li{:class => "nav-item"}
           = link_to 'Message', '#', :class => 'nav-link'
           
       %ul{:class => "navbar-nav d-flex justify-content-end"}
-      
+
         - if user_signed_in?
           %li{:class => "nav-item"}
             =link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'nav-link')

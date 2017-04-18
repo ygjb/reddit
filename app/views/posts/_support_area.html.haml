@@ -1,18 +1,18 @@
 %div{:class => "sup"}
   %div{:class => "comment-info"}
     %div{:class => "links-group d-inline"}
-      -count = (link.comments.count == 0 ? 0 : link.comments.count)
-      = link_to link_path(link, anchor: "comments"), {class: "pr-2"} do
+      -count_comments = (post.comments.count == 0 ? 0 : post.comments.count)
+      = link_to post_path(post, anchor: "comments"), {class: "pr-2"} do
         %span(class="octicon octicon-comment")
         // =octicon "comment", :height => 16,  :class => "d-inline mt-1"
-        =count
+        =count_comments
         comments 
-    -if link.user == current_user 
-      = link_to edit_link_path(link), {class: "pr-2"} do
+    -if post.user == current_user 
+      = link_to edit_post_path(post), {class: "pr-2"} do
         %span(class="octicon octicon-pencil")
         edit
         // = octicon("pencil", :height => 16, :class => "d-inline mt-1")
-      = link_to link, method: :delete, data: { confirm: 'Are you sure?' } do
+      = link_to post, method: :delete, data: { confirm: 'Are you sure?' } do
         %span(class="octicon octicon-trashcan")
         delete
         // = octicon("trashcan", :height => 16, :class => "d-inline mt-1")

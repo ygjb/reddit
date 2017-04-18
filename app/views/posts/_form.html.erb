@@ -1,0 +1,52 @@
+<%= render 'layouts/error', obj: @post%>
+<script>  
+  try{
+    let _type = "<%= session[:post_type] unless session[:post_type] == nil %>"
+    history.pushState({type: _type}, `New ${_type}`, `?type=${_type}`);
+    location.hash = '';
+  }catch(ex){
+    console.log(ex);
+  }
+</script>
+<%= form_for(@post) do |f| %>
+  <div class="form-group row">
+    <%= f.label :title, :class => "col-2 col-form-label"%>
+    <div class="col-10">
+      <%= f.text_field :title, :class =>"form-control"%>
+    </div>
+  </div>
+  
+  <% if @post.post_type == "Link" %>
+    <div class = "form-group row">
+      <%= f.label :link_url, :class => "col-2 col-form-label"%>
+      <div class = "col-10">
+        <%= f.text_field :link_url, :class =>"form-control"%>
+      </div>
+    </div>
+  <% end%>
+  
+  <% if @post.post_type == "Image" %>
+    <div class = "form-group row">
+      <%= f.label :img_url, :class => "col-2 col-form-label"%>
+      <div class = "col-10">
+        <%= f.text_field :img_url, :class =>"form-control"%>
+      </div>
+    </div>
+  <% end%>
+  <% if @post.post_type == "Text" %>
+    <div class="form-group row">
+      <%= f.label :body_text, :class => "col-2 col-form-label"%>
+      <div class="col-10">
+        <%= f.text_area :body_text, :class =>"form-control"%>
+      </div>
+    </div>
+  <% end%>
+  <div class="form-group row">
+    <div class="col-12">
+      <%= f.button :submit, class: "btn btn-primary float-right" do %>
+        POST IT
+      <% end %>
+    </div>
+  </div>
+  <%= f.hidden_field :post_type, value: @post.post_type %>
+<% end %>
