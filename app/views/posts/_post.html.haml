@@ -3,7 +3,7 @@
     %div{:class => "like upvote"}
       =link_to create_like_path(post.id, "Post", :upvote), method: :put, :remote => true do
         %span(class="octicon octicon-chevron-up")
-    %div{:class => "like like-count"}
+    %div{:class => "like like_count_#{post.id}"}
       =all_like post.likes
     %div{:class => "like"}
       =link_to create_like_path(post.id,"Post",:downvote), method: :put, :remote => true do

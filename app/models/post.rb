@@ -4,18 +4,26 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable
   paginates_per(30)
   
-  validates :link_url, presence: true, http_url: true
-  validates :body_text, presence: true
-  validates :img_url, presence: true
+  validates :link_url, presence_post: true, http_url: true
+  validates :body_text, presence_post: true  
+  validates :img_url, presence_post: true 
+  before_save :validate_post
   
-  before_create :exists_posts
-  
+  def validate_post
+    case self.post_type
+    when "Link"
+      return true
+    when "Image"
+    when "Text"
+    else
+      false
+    end
+  end
   scope :posts_per_page, ->(page) {
     page = 1 if page.to_i.nil?
     # paginates_per(10)
     order(id: :desc).page page
   }
-  
   # Перевірка на вмісткість посилання в бд
   # Якщо існує то відміняємо зберігання та вивидимо помилку 
   # якщо не існує то зберігаємо

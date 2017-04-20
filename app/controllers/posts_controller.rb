@@ -16,13 +16,13 @@ class PostsController < ApplicationController
   def new
     @post = current_user.posts.new
     @post.post_type = params[:post_type]
+    set_visitor_sessions params[:post_type]
   end
 
   def edit
   end
 
   def create
-    # byebug 
     @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to posts_url, notice: 'Link was successfully created.'
@@ -49,13 +49,13 @@ class PostsController < ApplicationController
     def post_params
       case params[:post][:post_type]
       when "Link"
-        return params.require(:post).permit(:title, :type, :link_url, :user_id)
+        return params.require(:post).permit(:title, :post_type, :link_url, :user_id)
       when "Image"
-        return params.require(:post).permit(:title, :type, :body_text, :user_id)
+        return params.require(:post).permit(:title, :post_type, :body_text, :user_id)
       when "Text"
-        return params.require(:post).permit(:title, :type, :img_url, :user_id)
+        return params.require(:post).permit(:title, :post_type, :img_url, :user_id)
       else
-        "You gave me #{params[:type]} -- I have no idea what to do with that."
+        "You gave me #{params[:post][:post_type]} -- I have no idea what to do with that."
       end
     end
     def checking_of_equality
