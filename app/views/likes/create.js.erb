@@ -1,7 +1,13 @@
 try{
-  var like = ('<%= @like.to_json %>')
-  var res = like.replace(/&quot;/gi, "\"");
-  console.log(res);
+  var errors_message = ('<%= @error_messages %>')
+  if (errors_message === ""){
+    var count_like = parseInt(('<%= @count_like.to_json %>').replace(/&quot;/gi, "\""));
+    var like = JSON.parse(('<%= @like.to_json %>').replace(/&quot;/gi, "\""));
+    if (Number.isInteger(count_like)){
+      let like_tag = document.querySelector(`.like_count_${ like.likeable_id }`);
+      like_tag.innerText = count_like
+    }
+  }
 }catch(error){
   console.log(error);
 }

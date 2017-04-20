@@ -2,19 +2,15 @@ class LikesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   
   def create
-    @like = Like.send(params[:method],params,current_user)
-    # byebug
-    # Like.likes_count params[:id]
-    # @like_hash = {
-    #   like_id: @like.likeble_id
-    #   # like_id:
-    # }
+    method = params[:method]
     respond_to do |format|
-      if @like
-        format.js   { }
+      if method == "upvote" or method == "downvote"
+        @like = Like.send(params[:method],params,current_user)
+        @count_like = Like.number_of_likes(@like.likeable_id)
       else
-        format.html { render :root_path }
+        @error_messages = "Missing method Upvote or Downvote. A sended method: #{method}"
       end
+      format.js {}
     end
   end
 end

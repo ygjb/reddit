@@ -4,7 +4,7 @@ class Api::V1::PostsController < Api::BaseApiController
   
   def index
     @posts = Post.posts_per_page(params[:page])
-    if !@posts.blank?
+    if @posts.exists?
       render json: { :posts => @posts}, status: 200
     else
       render json: @posts.errors, status: :unprocessable_entity

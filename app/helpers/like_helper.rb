@@ -1,5 +1,6 @@
 module LikeHelper
   def all_like likes
+    # byebug
     count_like = 0
     likes.each do |like|
       count_like += like.vote
