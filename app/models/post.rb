@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments, as: :commentable
-  has_many :likes, as: :likeable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
   paginates_per(30)
   
   validates :link_url, presence_post: true, http_url: true
