@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_url, notice: 'Link was successfully created.'
     else
-      set_visitor_sessions params[:post][:post_type]
+      set_visitor_sessions params[:post][:post_type] unless params[:post][:post_type] == nil
       render :new
     end
   end
@@ -37,7 +37,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    
+    if @post.user == current_user
+      @post.destroy 
+      redirect_to posts_path, notice: 'Post was successfully destroyed.'
+    else 
+      redirect_to posts_path, notice: 'Цей запис вам не належить!'
+      
+    end
   end
   private
     def set_visitor_sessions param
@@ -55,7 +61,8 @@ class PostsController < ApplicationController
       when "Text"
         return params.require(:post).permit(:title, :post_type, :img_url, :user_id)
       else
-        "You gave me #{params[:post][:post_type]} -- I have no idea what to do with that."
+        logger.debug "You gave me #{params[:post][:post_type]} -- I have no idea what to do with that."
+        params[:post][:post_type] = nil
       end
     end
     def checking_of_equality
