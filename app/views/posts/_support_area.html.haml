@@ -4,14 +4,12 @@
       -count_comments = (post.comments.count == 0 ? 0 : post.comments.count)
       = link_to post_path(post, anchor: "comments"), {class: "pr-2"} do
         %span(class="octicon octicon-comment")
-        // =octicon "comment", :height => 16,  :class => "d-inline mt-1"
         =count_comments
         comments 
     -if post.user == current_user 
       = link_to edit_post_path(post), {class: "pr-2"} do
         %span(class="octicon octicon-pencil")
         edit
-        // = octicon("pencil", :height => 16, :class => "d-inline mt-1")
       = link_to post, method: :delete, data: { confirm: 'Are you sure?' } do
         %span(class="octicon octicon-trashcan")
         delete
