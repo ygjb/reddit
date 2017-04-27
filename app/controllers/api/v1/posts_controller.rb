@@ -21,6 +21,7 @@ class Api::V1::PostsController < Api::BaseApiController
   end
   
   def create
+    
     # @posts = current_user.posts.new(posts_params)
     # if @posts.save
     #   render json: @posts, status: 201 

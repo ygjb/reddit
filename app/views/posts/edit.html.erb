@@ -1,6 +1,3 @@
-<h1>Editing Link</h1>
+<h2 class="display-3 text-center">Edit <%= @post.post_type ||= session[:post_type] unless session[:post_type] == nil %></h2>
 
-<%= render 'form', link: @link %>
-
-<%= link_to 'Show', @link %> |
-<%= link_to 'Back', links_path %>
+<%= render 'form', post: @post %>

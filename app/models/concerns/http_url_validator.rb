@@ -8,6 +8,7 @@ class HttpUrlValidator < ActiveModel::EachValidator
   end
 
   def validate_each(record, attribute, value)
+    return false unless record.post_type == "Link" 
     unless value.present? && self.class.compliant?(value)
       record.errors.add(attribute, "is not a valid HTTP URL")
     end

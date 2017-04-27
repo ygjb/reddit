@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :checking_of_equality, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:show, :index]
+  
   def index
     @post = Post.order(id: :desc).page params[:page]
   end
@@ -20,36 +22,34 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.post_type == nil or @post.post_type == ""
+      redirect_to root_path, notice: 'Something went wrong! You can not edit this news right now. Try later.'
+    end
+    set_visitor_sessions @post.post_type
   end
 
   def create
-    @post = current_user.posts.new(post_params)
-    if @post.save
-      redirect_to posts_url, notice: 'Link was successfully created.'
+     if @post.update(post_params)
+      redirect_to @post, notice: 'Link was successfully updated.'
     else
-      set_visitor_sessions params[:post][:post_type] unless params[:post][:post_type] == nil
-      render :new
+      render :edit
     end
   end
 
   def update
-    
+    byebug
   end
 
   def destroy
-    if @post.user == current_user
-      @post.destroy 
-      redirect_to posts_path, notice: 'Post was successfully destroyed.'
-    else 
-      redirect_to posts_path, notice: 'Цей запис вам не належить!'
-      
-    end
+    @post.destroy 
+    redirect_to posts_path, notice: 'Post was successfully destroyed.'
   end
+  
   private
     def set_visitor_sessions param
       session[:post_type] = param
     end
-    def set_link
+    def set_post
       @post = Post.find_by(id: params[:id]) or render(:not_found, status: 404)
     end
     def post_params
@@ -57,17 +57,15 @@ class PostsController < ApplicationController
       when "Link"
         return params.require(:post).permit(:title, :post_type, :link_url, :user_id)
       when "Image"
-        return params.require(:post).permit(:title, :post_type, :body_text, :user_id)
-      when "Text"
         return params.require(:post).permit(:title, :post_type, :img_url, :user_id)
+      when "Text"
+        return params.require(:post).permit(:title, :post_type, :body_text, :user_id)
       else
         logger.debug "You gave me #{params[:post][:post_type]} -- I have no idea what to do with that."
         params[:post][:post_type] = nil
       end
     end
     def checking_of_equality
-      unless @post.user == current_user
-        redirect_back(fallback_location: root_path, notice: 'You are not the creator of the news!')
-      end
+      redirect_back(fallback_location: root_path, notice: 'You are not the creator of this news!') unless @post.user == current_user
     end
 end
