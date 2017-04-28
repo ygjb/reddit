@@ -11,10 +11,10 @@
   %div{:class => "link-content w-100"}
     -if post.post_type == "Link"
       %div{:class => "og-image"}
-        =image_tag("default_link.gif", size: "70x70", alt: post.title)
+        =image_tag("default_link.gif", size: "70x70", alt: "Empty Image Link")
     -if post.post_type == "Text"
       %div{:class => "og-image"}
-        =image_tag("default_text.png", size: "70x70", alt: post.title)
+        =image_tag("default_text.png", size: "70x70", alt: "Empty Image Link")
     -if post.post_type == "Image"
       %div{:class => "og-image"}
         =image_tag(post.image(:small), size: "70x70", alt: post.title)
