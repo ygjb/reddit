@@ -8,7 +8,7 @@
     console.log(ex);
   }
 </script>
-<%= form_for(@post) do |f| %>
+<%= form_for @post, :html => { :multipart => true } do |f| %>
   <div class="form-group row">
     <%= f.label :title, :class => "col-2 col-form-label"%>
     <div class="col-10">
@@ -29,7 +29,7 @@
     <div class = "form-group row">
       <%= f.label :img_url, :class => "col-2 col-form-label"%>
       <div class = "col-10">
-        <%= f.text_field :img_url, :class =>"form-control"%>
+        <%= f.file_field :image, :class =>"form-control"%>
       </div>
     </div>
   <% end%>

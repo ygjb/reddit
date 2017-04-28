@@ -29,15 +29,22 @@ class PostsController < ApplicationController
   end
 
   def create
-     if @post.update(post_params)
-      redirect_to @post, notice: 'Link was successfully updated.'
+    @post = current_user.posts.new(post_params)
+    # byebug
+    if @post.save
+      redirect_to posts_url, notice: 'Link was successfully created.'
     else
-      render :edit
+      set_visitor_sessions params[:post][:post_type]
+      render :new
     end
   end
 
   def update
-    byebug
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Link was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -57,7 +64,7 @@ class PostsController < ApplicationController
       when "Link"
         return params.require(:post).permit(:title, :post_type, :link_url, :user_id)
       when "Image"
-        return params.require(:post).permit(:title, :post_type, :img_url, :user_id)
+        return params.require(:post).permit(:title, :post_type, :image, :user_id)
       when "Text"
         return params.require(:post).permit(:title, :post_type, :body_text, :user_id)
       else

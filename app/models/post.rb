@@ -3,8 +3,20 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   
+  has_attached_file :image, :styles => { :small => "70x70>" },
+                  :url  => "/assets/posts/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/posts/:id/:style/:basename.:extension", 
+                  presence_post: true
+
+  # validates_attachment_presence :image
+  validates_attachment_size :image, :less_than => 5.megabytes
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']
+  
+  
+  
+  
   validates :title, presence: true
-  validates :img_url, presence_post: true
+  # validates :img_url, presence_post: true
   validates :body_text, presence_post: true  
   validates :link_url, presence_post: true, http_url: true
   

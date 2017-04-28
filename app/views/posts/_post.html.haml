@@ -9,6 +9,15 @@
       =link_to create_like_path(post.id,"Post",:downvote), method: :put, :remote => true do
         %span(class="octicon octicon-chevron-down")
   %div{:class => "link-content w-100"}
+    -if post.post_type == "Link"
+      %div{:class => "og-image"}
+        =image_tag("default_link.gif", size: "70x70", alt: post.title)
+    -if post.post_type == "Text"
+      %div{:class => "og-image"}
+        =image_tag("default_text.png", size: "70x70", alt: post.title)
+    -if post.post_type == "Image"
+      %div{:class => "og-image"}
+        =image_tag(post.image(:small), size: "70x70", alt: post.title)
     %h4{:class => "font-weight-normal"} 
       =link_to post.title, post
     = render "support_area", :post => post

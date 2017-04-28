@@ -98,5 +98,5 @@ Rails.application.configure do
   config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
     html_tag
   }
-  
+  Paperclip.options.merge!(:command_path => "/usr/bin")
 end

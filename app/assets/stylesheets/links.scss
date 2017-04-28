@@ -7,25 +7,18 @@
   .link-content {
     position: absolute;
     padding-left: 70px;
+    padding-top: 10px;
     z-index:1000;
     right: 0;
-  }
-}
-.like-area {
-  position: relative;
-  z-index: 1003;
-  .like{
-    span.octicon {
-      font-size: 3rem;
-      cursor: pointer;
+    .og-image{
+      position: relative;
+      left: 0;
+      top: 20px;
+      z-index: 1000;
+      float: left;
+      padding-right: 13px;
     }
-    font-size: 24px;
-    text-align: center;
   }
-}
-.octicon{
-  color: #bbc;//#fea
-  fill: currentColor;
 }
 .links-group{
   a:hover{

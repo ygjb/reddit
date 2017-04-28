@@ -4,7 +4,7 @@ class PresencePostValidator < ActiveModel::EachValidator
   def validate_specific_attributes(record,attribute,value)
     if attribute.present?
       if attribute == :body_text && record.post_type == "Text" || attribute == :link_url  && record.post_type == "Link" ||
-        attribute == :img_url   && record.post_type == "Image"
+        attribute == :image   && record.post_type == "Image"
         # дадавання повідомнення про помилку в разі відсутності обов'язкового поля! 
         record.errors.add(attribute, "can`t be blank!")  unless value.present?
         return false
