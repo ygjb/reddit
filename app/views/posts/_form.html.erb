@@ -8,14 +8,13 @@
     console.log(ex);
   }
 </script>
-<%= form_for @post, :html => { :multipart => true } do |f| %>
+<%= form_for @post, :html => { :multipart => true} do |f| %>
   <div class="form-group row">
     <%= f.label :title, :class => "col-2 col-form-label"%>
     <div class="col-10">
       <%= f.text_field :title, :class =>"form-control"%>
     </div>
   </div>
-  
   <% if @post.post_type == "Link" %>
     <div class = "form-group row">
       <%= f.label :link_url, :class => "col-2 col-form-label"%>
@@ -27,12 +26,12 @@
   
   <% if @post.post_type == "Image" %>
     <div class = "form-group row">
-      <%= f.label :img_url, :class => "col-2 col-form-label"%>
+      <%= f.label :image, :class => "col-2 col-form-label"%>
       <div class = "col-10">
-        <%= f.file_field :image, :class =>"form-control"%>
+        <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg, image/jpg', id: 'uploadImage' %>
       </div>
     </div>
-  <% end%>
+  <% end %>
   <% if @post.post_type == "Text" %>
     <div class="form-group row">
       <%= f.label :body_text, :class => "col-2 col-form-label"%>
@@ -40,7 +39,8 @@
         <%= f.text_area :body_text, :class =>"form-control"%>
       </div>
     </div>
-  <% end%>
+  <% end %>
+  
   <div class="form-group row">
     <div class="col-12">
       <%= f.button :submit, class: "btn btn-primary float-right" do %>
@@ -48,5 +48,7 @@
       <% end %>
     </div>
   </div>
+  
+  
   <%= f.hidden_field :post_type, value: @post.post_type %>
 <% end %>

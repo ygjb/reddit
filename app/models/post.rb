@@ -9,7 +9,7 @@ class Post < ApplicationRecord
                   presence_post: true
 
   # validates_attachment_presence :image
-  validates_attachment_size :image, :less_than => 5.megabytes
+  validates_attachment_size :image, :less_than => 3.megabytes
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']
   
   
