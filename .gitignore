@@ -22,3 +22,5 @@ config/secrets.yml
 # Ignore Byebug command history file.
 .byebug_history
 r.txt
+# public files
+/public/
