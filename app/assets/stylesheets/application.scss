@@ -1,11 +1,18 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+// Fonts 
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900s');
 @import "bootstrap";
 @import "comments";
 
 @import "links";
 @import "like";
 @import "octicons";
-
 body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
   background-color: rgba(246, 247, 248, 0.14) !important;
+  .navbar{
+    font-weight: 400;
+  }
 }

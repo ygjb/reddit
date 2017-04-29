@@ -18,7 +18,7 @@
     -if post.post_type == "Image"
       %div{:class => "og-image"}
         =image_tag(post.image(:small), size: "70x70", alt: post.title)
-    %h4{:class => "font-weight-normal"} 
+    %h4{:class => "font-weight-normal title"} 
       =link_to post.title, post
     = render "support_area", :post => post
     %div{:class => "created-at text-muted"}
