@@ -1,0 +1,8 @@
+<script>
+try{
+  let _type = "<%= session[:post_type] unless session[:post_type] == nil %>"
+  history.pushState({post_type: _type}, `New ${_type}`, `?post_type=${_type}`);
+}catch(ex){
+  console.log(ex);
+}
+</script>

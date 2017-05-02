@@ -1,54 +1,28 @@
 <%= render 'layouts/error', obj: @post%>
-<script>  
-  try{
-    let _type = "<%= session[:post_type] unless session[:post_type] == nil %>"
-    history.pushState({post_type: _type}, `New ${_type}`, `?post_type=${_type}`);
-    // location.hash = '';
-  }catch(ex){
-    console.log(ex);
-  }
-</script>
-<%= form_for @post, :html => { :multipart => true} do |f| %>
-  <div class="form-group row">
-    <%= f.label :title, :class => "col-2 col-form-label"%>
-    <div class="col-10">
-      <%= f.text_field :title, :class =>"form-control"%>
-    </div>
-  </div>
-  <% if @post.post_type == "Link" %>
-    <div class = "form-group row">
-      <%= f.label :link_url, :class => "col-2 col-form-label"%>
-      <div class = "col-10">
-        <%= f.text_field :link_url, :class =>"form-control"%>
-      </div>
-    </div>
-  <% end%>
-  
-  <% if @post.post_type == "Image" %>
-    <div class = "form-group row">
-      <%= f.label :image, :class => "col-2 col-form-label"%>
-      <div class = "col-10">
-        <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg, image/jpg', id: 'uploadImage' %>
-      </div>
-    </div>
-  <% end %>
-  <% if @post.post_type == "Text" %>
+<%= render(:partial => 'posts/form/location', :handlers => [:erb], :formats => [:js], session: session)%>
+
+<% if @post.post_type == "Link" || @post.post_type == "Image" || @post.post_type == "Text" %>
+  <%= form_for @post, :html => { :multipart => true} do |f| %>
     <div class="form-group row">
-      <%= f.label :body_text, :class => "col-2 col-form-label"%>
+      <%= f.label :title, :class => "col-2 col-form-label"%>
       <div class="col-10">
-        <%= f.text_area :body_text, :class =>"form-control"%>
+        <%= f.text_field :title, :class =>"form-control"%>
       </div>
     </div>
-  <% end %>
-  
-  <div class="form-group row">
-    <div class="col-12">
-      <%= f.button :submit, class: "btn btn-primary float-right" do %>
-        POST IT
-      <% end %>
+    
+    <%= render "posts/form/f#{@post.post_type.downcase}", f: f%>
+    
+    <div class="form-group row">
+      <div class="col-12">
+        <%= f.button :submit, class: "btn btn-primary float-right" do %>
+          POST IT
+        <% end %>
+      </div>
     </div>
-  </div>
+    
+    <%= f.hidden_field :post_type, value: @post.post_type %>
   
-  
-  <%= f.hidden_field :post_type, value: @post.post_type %>
+  <% end%>
+<% else %>
+  <%= redirect_to root_path %>
 <% end %>
