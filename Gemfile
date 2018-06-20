@@ -15,19 +15,19 @@ group :development, :production do
   gem 'oj' # for cyrillic symbols
   gem 'oj_mimic_json'
   gem 'pg'
-  gem 'devise'
+  gem 'devise', '>= 4.2.0'
   gem 'rollbar'
-  gem 'jquery-rails'
+  gem 'jquery-rails', '>= 4.2.2'
   gem 'puma', '~> 3.0'
   gem 'rails_12factor'
   gem 'turbolinks', '~> 5'
   gem 'uglifier', '>= 1.3.0'
-  gem 'sass-rails', '~> 5.0'
-  gem 'paperclip', '~> 5.0.0'
-  gem 'coffee-rails', '~> 4.2'
-  gem 'haml', '~> 4.0', '>= 4.0.7'
+  gem 'sass-rails', '~> 5.0', '>= 5.0.6'
+  gem 'paperclip', '~> 5.2.1'
+  gem 'coffee-rails', '~> 4.2', '>= 4.2.1'
+  gem 'haml', '~> 5.0', '>= 5.0.0'
   gem 'bootstrap', '~> 4.0.0.alpha6'
-  gem 'simple_token_authentication', '~> 1.0'
+  gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 end
 group :production do
@@ -36,12 +36,12 @@ end
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  gem 'factory_girl_rails', '>= 4.8.0'
+  gem 'rspec-rails', '>= 3.5.2'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 3.4.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
