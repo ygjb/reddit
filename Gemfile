@@ -11,7 +11,7 @@ end
 group :development, :production do
   #Create JSON structures via a Builder-style DSL
   gem 'jbuilder', '~> 2.6', '>= 2.6.3'
-  gem 'rails', '~> 5.0.2'
+  gem 'rails', '~> 5.0.7', '>= 5.0.7.1'
   gem 'oj' # for cyrillic symbols
   gem 'oj_mimic_json'
   gem 'pg'
@@ -27,7 +27,7 @@ group :development, :production do
   gem 'coffee-rails', '~> 4.2'
   gem 'haml', '~> 4.0', '>= 4.0.7'
   gem 'bootstrap', '~> 4.0.0.alpha6'
-  gem 'simple_token_authentication', '~> 1.0'
+  gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 end
 group :production do
