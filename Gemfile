@@ -15,7 +15,7 @@ group :development, :production do
   gem 'oj' # for cyrillic symbols
   gem 'oj_mimic_json'
   gem 'pg'
-  gem 'devise'
+  gem 'devise', '>= 4.6.0'
   gem 'rollbar'
   gem 'jquery-rails'
   gem 'puma', '~> 3.0'
@@ -27,7 +27,7 @@ group :development, :production do
   gem 'coffee-rails', '~> 4.2'
   gem 'haml', '~> 4.0', '>= 4.0.7'
   gem 'bootstrap', '~> 4.0.0.alpha6'
-  gem 'simple_token_authentication', '~> 1.0'
+  gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
   gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 end
 group :production do
